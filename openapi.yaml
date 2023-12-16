@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Taxi Service API
+  version: 1.0.0
+  description: API para el servicio de solicitud de taxi
+
+paths:
+  /solicitud-servicio-taxi:
+    post:
+      summary: Registrar una solicitud de servicio de taxi
+      description: Permite a un cliente solicitar un servicio de taxi.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cliente_id:
+                  type: string
+                  description: ID del cliente que realiza la solicitud
+                origen:
+                  type: string
+                  description: Dirección de origen del servicio
+                destino:
+                  type: string
+                  description: Dirección de destino del servicio
+              required:
+                - cliente_id
+                - origen
+                - destino
+      responses:
+        '200':
+          description: Solicitud de servicio de taxi registrada exitosamente
+        '400':
+          description: Error en la solicitud
+
+
